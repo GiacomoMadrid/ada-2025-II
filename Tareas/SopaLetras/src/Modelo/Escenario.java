@@ -17,13 +17,15 @@ public class Escenario extends JPanel{
     private int n;
     private char[][] letras;
     private JPanel grid;
+    private JLabel[][] matrizLabels;
     private JPanel margenIzquierdo;
     private JPanel margenDerecho;
     
     public Escenario(char[][] letras) {
         this.letras = letras;
         this.n = letras.length;
-
+        this.matrizLabels = new JLabel[n][n];
+        
         setLayout(new BorderLayout());
         margenIzquierdo  = new JPanel();
         margenDerecho = new JPanel();
@@ -34,10 +36,17 @@ public class Escenario extends JPanel{
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 JLabel lbl = new JLabel(String.valueOf(letras[i][j]), SwingConstants.CENTER);
+                lbl.setFont(lbl.getFont().deriveFont(20f));
                 lbl.setOpaque(true);
-                lbl.setBackground(Color.WHITE);
+                lbl.setBackground(Color.WHITE);  
                 lbl.setBorder(new LineBorder(Color.BLACK));
-                grid.add(lbl);
+                if(Character.isDigit(String.valueOf(letras[i][j]).charAt(0))){
+                    lbl.setForeground(Color.RED);
+                }else{
+                    lbl.setForeground(Color.BLACK);
+                }
+                matrizLabels[i][j] = lbl;
+                grid.add(matrizLabels[i][j]);
             }
         }
 
@@ -69,6 +78,16 @@ public class Escenario extends JPanel{
         repaint();
     }
 
+    public void limpiarColores() {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrizLabels[i][j].setBackground(Color.WHITE);
+            }
+        }
+    }
+        
+    //****************************** GET & SET *********************************
+    
     public int getN() {
         return n;
     }
@@ -76,8 +95,15 @@ public class Escenario extends JPanel{
     public void setN(int n) {
         this.n = n;
     }
+
+    public JPanel getGrid() {
+        return grid;
+    }
     
-    
+    public JLabel getCelda(int fila, int columna) {
+        return matrizLabels[fila][columna];
+    }
+
     
     
 }

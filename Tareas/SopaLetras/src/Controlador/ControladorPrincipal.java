@@ -34,4 +34,8 @@ public class ControladorPrincipal {
         this.vista.txtRespuesta.setText("");
     }
     
+    public Escenario getEscenario(){
+        return this.escenario;
+    }
+    
 }

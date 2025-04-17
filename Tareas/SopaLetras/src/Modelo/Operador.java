@@ -1,7 +1,9 @@
 package Modelo;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.util.ArrayList;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 /**
@@ -64,18 +66,62 @@ public class Operador {
         }
         return null;
     }
-     
-    public static void mostrarResultado(char[][] sopa, JTextArea txtResultado){
-        for(String palabra : listaPalabras){        
+    
+    public static void mostrarResultado(char[][] sopa, JTextArea txtResultado, Escenario esc) {
+        int R=255;
+        int G=255;
+        int B=0;
+        Color colorResultado = new Color(R,G,B);
+        
+        for (String palabra : listaPalabras) {
             Point[] resultado = Operador.buscarPalabra(sopa, palabra);
+            
             if (resultado != null) {
-                txtResultado.append("Inicio: (" + (resultado[0].x+1) + ", " + (resultado[0].y+1) + "). ");
-                txtResultado.append("Fin: (" + (resultado[1].x+1) + ", " + (resultado[1].y+1) + "). \n");
+                int x1 = resultado[0].x;
+                int y1 = resultado[0].y;
+                int x2 = resultado[1].x;
+                int y2 = resultado[1].y;
+
+                txtResultado.append(palabra + ": Inicio: (" + x1 + ", " + y1 + "). ");
+                txtResultado.append("Fin: (" + x2 + ", " + y2 + "). \n");
+
+                // Determinar dirección de movimiento
+                int dx = Integer.compare(x2, x1); // 1, 0 o -1
+                int dy = Integer.compare(y2, y1); // 1, 0 o -1
+
+                int pasos = palabra.length();
+
+                for (int k = 0; k < pasos; k++) {
+                    int fila = x1 + dx * k;
+                    int col  = y1 + dy * k;
+
+                    JLabel lbl = esc.getCelda(fila, col);
+                    lbl.setOpaque(true);  // Necesario para que el fondo se pinte
+                    lbl.setBackground(colorResultado);
+                }
+                R = R-25;
+                B = B+20;
+                colorResultado = new Color(R,G,B);
+
+            } else {
+                txtResultado.append("Palabra: " + palabra + " no encontrada\n");
+            }
+        }
+    }
+    
+    /*
+    public static void mostrarResultado(char[][] sopa, JTextArea txtResultado, Escenario esc){
+        for(String palabra : listaPalabras){        
+            Point[] resultado = Operador.buscarPalabra(sopa, palabra);            
+            if (resultado != null) {
+                txtResultado.append(palabra +": Inicio: (" + (resultado[0].x) + ", " + (resultado[0].y) + "). ");
+                txtResultado.append("Fin: (" + (resultado[1].x) + ", " + (resultado[1].y) + "). \n");
+                                
             } else {
                 txtResultado.append("Palabra: " + palabra + " no encontrada \n");
             }
         }
-    }
+    }*/
 }
     
 

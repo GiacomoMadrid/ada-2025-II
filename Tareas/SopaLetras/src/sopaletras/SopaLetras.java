@@ -20,15 +20,14 @@ public class SopaLetras {
     public static void main(String[] args) {
         //Creamos la sopa de letras
         char[][] sopa = {
-            {'E','S','T','O','X'},
-            {'S','T','T','M','X'},
-            {'E','A','S','A','X'},
-            {'P','R','N','E','X'},
-            {'X','X','X','X','X'}
+            {'X','1','2','3','4'},
+            {'1','E','S','T','O'},
+            {'2','S','T','T','M'},
+            {'3','E','A','S','A'},
+            {'4','P','R','N','E'}
         };
         //Creamos la lista de plabras a buscar:
-        ArrayList<String> lista = new ArrayList<>();
-        
+        ArrayList<String> lista = new ArrayList<>();        
         lista.add("ESTO");
         lista.add("ESE");
         lista.add("PATO");
@@ -36,8 +35,9 @@ public class SopaLetras {
         
         frmPrincipal vista = new frmPrincipal();
         ControladorPrincipal cont = new ControladorPrincipal(vista, sopa);
+        cont.iniciar();
         Operador.llenarLista(lista);
-        Operador.mostrarResultado(sopa, vista.txtRespuesta);
+        Operador.mostrarResultado(sopa, vista.txtRespuesta, cont.getEscenario());
         
         
     }
