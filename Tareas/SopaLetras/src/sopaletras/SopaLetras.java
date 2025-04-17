@@ -6,6 +6,7 @@ package sopaletras;
 import Controlador.ControladorPrincipal;
 import Modelo.Operador;
 import Vista.frmPrincipal;
+import java.util.ArrayList;
 
 /**
  *
@@ -25,10 +26,17 @@ public class SopaLetras {
             {'P','R','N','E','X'},
             {'X','X','X','X','X'}
         };
+        //Creamos la lista de plabras a buscar:
+        ArrayList<String> lista = new ArrayList<>();
+        
+        lista.add("ESTO");
+        lista.add("ESE");
+        lista.add("PATO");
+        lista.add("ESTE");
         
         frmPrincipal vista = new frmPrincipal();
         ControladorPrincipal cont = new ControladorPrincipal(vista, sopa);
-        Operador.llenarLista();
+        Operador.llenarLista(lista);
         Operador.mostrarResultado(sopa, vista.txtRespuesta);
         
         

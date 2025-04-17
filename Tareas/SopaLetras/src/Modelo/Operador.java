@@ -12,11 +12,10 @@ public class Operador {
     //Crear lista de palabras
     private static ArrayList<String> listaPalabras = new ArrayList<>();
     
-    public static void llenarLista(){
-        Operador.listaPalabras.add("ESTO");
-        Operador.listaPalabras.add("ESE");
-        Operador.listaPalabras.add("PATO");
-        Operador.listaPalabras.add("ESTE");
+    public static void llenarLista(ArrayList<String> l){
+        for(String palabra: l){
+            Operador.listaPalabras.add(palabra);
+        }
     }
     
     
