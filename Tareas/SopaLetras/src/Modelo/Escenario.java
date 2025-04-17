@@ -68,6 +68,16 @@ public class Escenario extends JPanel{
         revalidate();
         repaint();
     }
+
+    public int getN() {
+        return n;
+    }
+
+    public void setN(int n) {
+        this.n = n;
+    }
+    
+    
     
     
 }
