@@ -83,6 +83,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 153)));
 
+        txtRespuesta.setEditable(false);
         txtRespuesta.setColumns(20);
         txtRespuesta.setRows(5);
         jScrollPane1.setViewportView(txtRespuesta);

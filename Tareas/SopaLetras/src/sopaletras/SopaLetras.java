@@ -26,6 +26,7 @@ public class SopaLetras {
             {'3','E','A','S','A'},
             {'4','P','R','N','E'}
         };
+        
         //Creamos la lista de plabras a buscar:
         ArrayList<String> lista = new ArrayList<>();        
         lista.add("ESTO");
@@ -33,6 +34,7 @@ public class SopaLetras {
         lista.add("PATO");
         lista.add("ESTE");
         
+        //Main Code
         frmPrincipal vista = new frmPrincipal();
         ControladorPrincipal cont = new ControladorPrincipal(vista, sopa);
         cont.iniciar();
