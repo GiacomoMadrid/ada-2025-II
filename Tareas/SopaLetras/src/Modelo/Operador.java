@@ -101,6 +101,7 @@ public class Operador {
                 }
                 R = R-25;
                 B = B+20;
+                G = G-10;
                 colorResultado = new Color(R,G,B);
 
             } else {
